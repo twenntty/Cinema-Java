@@ -74,6 +74,36 @@ public class Cinema {
         }
     }
 
+    public boolean checkAvailability(int hallNumber, int numSeats) {
+        if (hallNumber < 1 || hallNumber > halls) {
+            System.out.println("Зал з номером " + hallNumber + " не існує.");
+            return false;
+        }
+
+        if (numSeats <= 0 || numSeats > seatsPerRow) {
+            System.out.println("Невірна кількість місць для перевірки.");
+            return false;
+        }
+
+        for (int row = 0; row < rows; row++) {
+            int consecutiveEmptySeats = 0;
+
+            for (int seat = 0; seat < seatsPerRow; seat++) {
+                if (cinemaArray[hallNumber - 1][row][seat] == 0) {
+                    consecutiveEmptySeats++;
+                    if (consecutiveEmptySeats == numSeats) {
+                        System.out.println("Доступно " + numSeats + " послідовних місць у ряду " + (row + 1) + " в залі " + hallNumber + ".");
+                        return true;
+                    }
+                } else {
+                    consecutiveEmptySeats = 0;
+                }
+            }
+        }
+
+        System.out.println("Не знайдено " + numSeats + " послідовних вільних місць у залі " + hallNumber + ".");
+        return false;
+    }
 
     public void displayHall(int hallNumber) {
         if (hallNumber < 1 || hallNumber > halls) {

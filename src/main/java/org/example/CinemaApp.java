@@ -13,9 +13,21 @@ public class CinemaApp {
         do {
             System.out.println("Виберіть номер залу (1-5): ");
             hallNumber = scanner.nextInt();
+            if (hallNumber < 1 || hallNumber > 5) {
+                System.out.println("Зал з номером " + hallNumber + " не існує.");
+            }
         } while (hallNumber < 1 || hallNumber > 5);
 
         cinema.displayHall(hallNumber);
+
+        System.out.println("Введіть кількість місць для бронювання: ");
+        int numSeats = scanner.nextInt();
+
+        boolean seatsAvailable = cinema.checkAvailability(hallNumber, numSeats);
+        if (!seatsAvailable) {
+            System.out.println("На жаль, недостатньо вільних місць для заданої кількості.");
+            return;
+        }
 
         System.out.println("Введіть номер ряду: ");
         int row = scanner.nextInt();
