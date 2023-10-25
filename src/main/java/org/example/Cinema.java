@@ -105,16 +105,16 @@ public class Cinema {
         return false;
     }
 
-    public void displayHall(int hallNumber) {
+    public void printSeatingArrangement(int hallNumber) {
         if (hallNumber < 1 || hallNumber > halls) {
-            System.out.println("" + hallNumber + "");
+            System.out.println("Зал з номером " + hallNumber + " не існує.");
             return;
         }
 
-        System.out.println("" + hallNumber + "");
+        System.out.println("Схема розміщення місць для залу " + hallNumber + ":");
         for (int row = 0; row < rows; row++) {
             for (int seat = 0; seat < seatsPerRow; seat++) {
-                if (cinemaArray[hallNumber - 1][row][seat] == 0){
+                if (cinemaArray[hallNumber - 1][row][seat] == 0) {
                     System.out.print("0 ");
                 } else {
                     System.out.print("1 ");
@@ -123,6 +123,7 @@ public class Cinema {
             System.out.println();
         }
     }
+
     public static void main(String[] args) {
         Cinema cinema = new Cinema();
 

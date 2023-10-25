@@ -18,7 +18,7 @@ public class CinemaApp {
             }
         } while (hallNumber < 1 || hallNumber > 5);
 
-        cinema.displayHall(hallNumber);
+        cinema.printSeatingArrangement(hallNumber);
 
         System.out.println("Введіть кількість місць для бронювання: ");
         int numSeats = scanner.nextInt();
@@ -33,7 +33,8 @@ public class CinemaApp {
         int row = scanner.nextInt();
 
         System.out.println("Введіть номери місць (розділіть пробілами): ");
-        String seatsInput = scanner.next();
+        scanner.nextLine();
+        String seatsInput = scanner.nextLine();
         String[] seatsInputArray = seatsInput.split(" ");
         int[] seats = new int[seatsInputArray.length];
         for (int i = 0; i < seatsInputArray.length; i++) {
@@ -42,13 +43,13 @@ public class CinemaApp {
 
         cinema.bookSeats(hallNumber, row, seats);
 
-        cinema.displayHall(hallNumber);
+        cinema.printSeatingArrangement(hallNumber);
 
         System.out.println("Бажаєте скасувати бронювання? (Так/Ні): ");
         String cancelChoice = scanner.next();
         if (cancelChoice.equalsIgnoreCase("Так")) {
             cinema.cancelBooking(hallNumber, row, seats);
-            cinema.displayHall(hallNumber);
+            cinema.printSeatingArrangement(hallNumber);
         }
     }
 }
