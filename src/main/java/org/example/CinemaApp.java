@@ -52,4 +52,12 @@ public class CinemaApp {
             cinema.printSeatingArrangement(hallNumber);
         }
     }
+
+    public boolean checkAvailability(int hallNumber, int numSeats) {
+        return false;
+    }
+
+    public boolean isValidHallNumber(int hallNumber) {
+        return false;
+    }
 }

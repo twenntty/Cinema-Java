@@ -138,4 +138,8 @@ public class Cinema {
             System.out.println();
         }
     }
+
+    public int[][][] getCinemaArray() {
+        return cinemaArray;
+    }
 }
