@@ -47,6 +47,34 @@ public class Cinema {
         }
     }
 
+    public void cancelBooking(int hallNumber, int row, int[] seats) {
+        if (hallNumber < 1 || hallNumber > halls) {
+            System.out.println("Зал з номером " + hallNumber + " не існує.");
+            return;
+        }
+
+        if (row < 1 || row > rows) {
+            System.out.println("Ряд " + row + " не існує в залі " + hallNumber + ".");
+            return;
+        }
+
+        for (int seat : seats) {
+            if (seat < 1 || seat > seatsPerRow) {
+                System.out.println("Місце " + seat + " не існує в ряду " + row + ".");
+                continue;
+            }
+
+            int seatIndex = seat - 1;
+            if (cinemaArray[hallNumber - 1][row - 1][seatIndex] == 0) {
+                System.out.println("Місце " + seat + " в ряду " + row + " в залі " + hallNumber + " вже вільне.");
+            } else {
+                cinemaArray[hallNumber - 1][row - 1][seatIndex] = 0;
+                System.out.println("Скасування бронювання місця " + seat + " в ряду " + row + " в залі " + hallNumber + ".");
+            }
+        }
+    }
+
+
     public void displayHall(int hallNumber) {
         if (hallNumber < 1 || hallNumber > halls) {
             System.out.println("" + hallNumber + "");

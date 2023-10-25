@@ -31,5 +31,12 @@ public class CinemaApp {
         cinema.bookSeats(hallNumber, row, seats);
 
         cinema.displayHall(hallNumber);
+
+        System.out.println("Бажаєте скасувати бронювання? (Так/Ні): ");
+        String cancelChoice = scanner.next();
+        if (cancelChoice.equalsIgnoreCase("Так")) {
+            cinema.cancelBooking(hallNumber, row, seats);
+            cinema.displayHall(hallNumber);
+        }
     }
 }
