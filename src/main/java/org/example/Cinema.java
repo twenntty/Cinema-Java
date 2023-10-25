@@ -42,8 +42,27 @@ public class Cinema {
                 System.out.println("Місце " + seat + " в ряду "  + row + " в залі " + hallNumber + " вже заброньоване.");
             } else {
                 cinemaArray[hallNumber - 1][row - 1][seatIndex] = 1;
-                System.out.println("Місце " + seat + " в ряду " + row + " в залі " + hallNumber + "було успішно заброньоване.");
+                System.out.println("Місце " + seat + " в ряду " + row + " в залі " + hallNumber + " було успішно заброньоване.");
             }
+        }
+    }
+
+    public void displayHall(int hallNumber) {
+        if (hallNumber < 1 || hallNumber > halls) {
+            System.out.println("" + hallNumber + "");
+            return;
+        }
+
+        System.out.println("" + hallNumber + "");
+        for (int row = 0; row < rows; row++) {
+            for (int seat = 0; seat < seatsPerRow; seat++) {
+                if (cinemaArray[hallNumber - 1][row][seat] == 0){
+                    System.out.print("0 ");
+                } else {
+                    System.out.print("1 ");
+                }
+            }
+            System.out.println();
         }
     }
     public static void main(String[] args) {
